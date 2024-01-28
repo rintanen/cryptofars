@@ -53,16 +53,11 @@ fn find_key_and_text(bytes: &[u8]) -> Deciphered {
 }
 
 
-fn hamming_distance(bytes1: &[u8], bytes2: &[u8]) -> usize {
-    let mut distance = 0;
-    for (byte1, byte2) in bytes1.iter().zip(bytes2.iter()) {
-        let mut xor = byte1 ^ byte2;
-        while xor > 0 {
-            distance += xor & 1;
-            xor >>= 1;
-        }
-    }
-    distance as usize
+fn hamming_distance(s1: &[u8], s2: &[u8]) -> usize {
+    s1.iter()
+        .zip(s2)
+        .map(|(b1,b2)| (b1^b2).count_ones() as usize)
+        .sum()
 }
 
 
