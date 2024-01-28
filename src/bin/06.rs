@@ -1,4 +1,4 @@
-use base64::{Engine as _, alphabet, engine::{self, general_purpose}};
+use base64::{Engine as _, engine::{general_purpose}};
 use itertools::Itertools;
 
 type Deciphered = (u8, Vec<u8>, u32);
@@ -115,5 +115,9 @@ fn main() {
 
     let text = repeating_key_xor(&bytes, &key);
 
-    println!("key: {} \ntext: {}", std::str::from_utf8(&key).unwrap(), std::str::from_utf8(&text).unwrap());
+    println!(
+        "key: {} \ntext: {}",
+        std::str::from_utf8(&key).unwrap(),
+        std::str::from_utf8(&text).unwrap()
+    );
 }
