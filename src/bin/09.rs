@@ -11,5 +11,5 @@ fn pkcs7_padding(bytes: &[u8], block_size: usize) -> Vec<u8> {
 fn main() {
     let bytes = b"YELLOW SUBMARINE";
     let result = pkcs7_padding(bytes, 20);
-    println!("{:?}", result);
+    println!("{:?}", std::str::from_utf8(&result).unwrap());
 }
